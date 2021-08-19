@@ -8,12 +8,13 @@ from pathlib import Path
 #画像フォルダを用意
 output_folder = Path('画像')
 
-#メニューとなるエクセルブック作成
+#雛形エクセルファイルを読み込む
 wb = openpyxl.load_workbook('scraping_excel.xlsx')
 sheet = wb.active
-sheet.title = '甚兵衛'
+sheet.title = 'hotmot'
 
 #関数定義
+#スクレイピングしたデータを配列に
 def scrapingdataToList(scrapingdata, op):
     rtn_list = []
     for data in scrapingdata:
