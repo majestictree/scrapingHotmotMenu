@@ -28,7 +28,7 @@ def downloadImages(url_list):
     output_folder.mkdir(exist_ok=True)
     file_i = 1
     for item in images_url_list:
-        url = "https:" + item
+        url = "https://www.hottomotto.com" + item
         filename = str(file_i) + ".jpg"
         print(url)
         save_path = output_folder.joinpath(filename)
@@ -42,12 +42,12 @@ def downloadImages(url_list):
         file_i += 1
 
 #スクレイピング処理開始
-res = requests.get('https://demae-can.com/shop/menu/3005065/')
+res = requests.get('https://www.hottomotto.com/menu_list/index/1')
 res.raise_for_status()
 soup = bs4.BeautifulSoup(res.text, 'html.parser')
-names = soup.select('.item_name')
-prices = soup.select('.item_price')
-images_url = soup.select('.item_img img')
+names = soup.select('.c-menu__title')
+prices = soup.select('.c-menu__price')
+images_url = soup.select('.c-menu__item img')
 
 name_list = scrapingdataToList(names, 'text')
 price_list = scrapingdataToList(prices, 'text')
@@ -88,9 +88,11 @@ flag = 0
 j = 2
 k = 1
 for i in range(1,45):
-    img = Image('C:\\Users\\user\\Desktop\\WorkSpace\\1.ToDo\\scrapingLunchMenu\\画像\\' + str(i) + ".jpg")
+    img = Image('C:\\Users\\user\\Desktop\\WorkSpace\\1.ToDo\\scrapingHotMotMenu\\画像\\' + str(i) + ".jpg")
     cell_address = sheet.cell(row = j, column = k).coordinate
     img.anchor = cell_address
+    img.width = 130
+    img.height = 130
     sheet.add_image(img)
     if (flag == 0):
         flag = 1
