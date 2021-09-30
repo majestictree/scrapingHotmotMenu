@@ -53,6 +53,11 @@ name_list = scrapingdataToList(names, 'text')
 price_list = scrapingdataToList(prices, 'text')
 images_url_list = scrapingdataToList(images_url, 'src')
 
+#91番目以降の要素を削除
+name_list[91:] = []
+price_list[91:] = []
+images_url_list[91:] = []
+
 #値段が550円よりも高いメニューを除外
 price = 0
 price_list_tmp = copy.copy(price_list)
