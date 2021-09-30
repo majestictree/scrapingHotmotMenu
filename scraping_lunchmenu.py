@@ -88,7 +88,7 @@ flag = 0
 j = 2
 k = 1
 for i in range(1,45):
-    img = Image('C:\\Users\\user\\Desktop\\WorkSpace\\1.ToDo\\scrapingHotMotMenu\\画像\\' + str(i) + ".jpg")
+    img = Image(str(Path.cwd()) + '\\画像\\' + str(i) + ".jpg")
     cell_address = sheet.cell(row = j, column = k).coordinate
     img.anchor = cell_address
     img.width = 130
